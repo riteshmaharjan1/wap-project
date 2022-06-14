@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+      $.ajax("/allCars", {
+        type: "GET",
+      })
+        .done((cars) => {
+          if (Array.isArray(cars)) {
+            var mainContent = $("#mainContent");
+            // {"_id":"62a7a674ccc2d04a43d42c60","condition":"New","make":"2006","price":2000,"distance":"140 miles","zip":52557,"model":"S4","__v":0}
+            let table = $("<table>");
+            let thead = $("<thead>");
+            table.append(thead);
+            let headTR = $("<tr>");
+
+            for (const key in cars[0]) {
+              let th = $("<th>");
+
+              if (key == "_id") {
+                continue;
+              }
+              th.html(key);
+              headTR.append(th);
+            }
+            thead.append(headTR);
+
+            let tbody = $("<tbody>");
+
+            for (const car of cars) {
+              let tr = $("<tr>");
+
+              for (const key in car) {
+                if (key == "_id") {
+                  continue;
+                }
+                let td = $("<td>");
+                td.html(car[key]);
+                tr.append(td);
+              }
+              tbody.append(tr);
+            }
+            table.append(tbody);
+            mainContent.html(table);
+          }
+        })
+        .fail(() => {
+          console.log("Failed gracefully.");
+        });
+
+      function sortCars(cars) {
+
+        //do sorting based on different categories
+        return cars.sort((x, y) => {
+          return x.price - y.price;
+        });
+      }
+    </script>
+  </head>
+  <body>
     <h1>CAR PAGE</h1>
-</body>
+
+    <div id="mainContent">No Contents to show.</div>
+  </body>
 </html>

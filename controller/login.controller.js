@@ -29,11 +29,12 @@ exports.authenticate = async (req, res, next) => {
                 res.redirect("/car")
             } else {
                 //Username or password incorrect
-                res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
+                res.render(path.join(__dirname, '../', 'views', 'login.html'),
+                    { message: "Username or password incorrect." });
             }
         } else {
             //User not found in system
-            res.render("login", { a: 11 });
+            res.render("login", { message: "User not found in the system." });
         }
 
     } catch (error) {
@@ -63,7 +64,7 @@ exports.registration = async (req, res, next) => {
 
 exports.login = (req, res, next) => {
     ConsoleLogger("Reached #login");
-    res.render("login", { a: 1 });
+    res.render("login", { message: "" });
 }
 
 /**
