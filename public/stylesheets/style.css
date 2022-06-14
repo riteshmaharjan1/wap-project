@@ -1,0 +1,117 @@
+body {
+    display: grid;
+    font-family: Inter var, Helvetica, Arial, sans-serif;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: auto minmax(-webkit-min-content, 1fr) auto;
+    grid-template-rows: auto minmax(min-content, 1fr) auto;
+    height: 100vh;
+}
+
+.global-header{
+    position: relative;
+}
+
+.global-header:after {
+    background-image: linear-gradient(-90deg, #00bfde, #532380);
+    content: "";
+    height: 4px;
+    position: absolute;
+    width: 100%;
+}
+
+.global-header li {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    margin: 8px 0;
+    width: 100%;
+}
+.global-header li.header-link {
+    border: 0;
+    height: auto;
+    width: auto;    
+    padding: 0 13px
+}
+.global-header li a {
+    align-items: center;
+    color: #212121;
+    display: flex;
+    line-height: 1;
+    margin: 0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+}
+.global-header ul.header-links-wrapper {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    grid-template-rows: auto;
+    height: auto;
+    margin: 0;
+    padding-bottom: 0;
+    position: static;
+    width: auto;
+} 
+
+.global-header .container{
+    align-items: center;
+    height: 52px;
+    margin: 0 auto;
+    max-width: 1170px;
+}
+.m70{
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+.header-logo {
+    /* height: 31px; */
+    height: auto;
+    width: 71px;
+    float: left;
+    padding: 5px 0;
+}
+.sds-field{
+    margin-bottom: 15px;
+    width: 70%;
+}
+.input-bor{
+    padding: 15px !important;
+    border-radius: 10px !important;
+}
+.color-text {
+    color: #b0c;
+    text-decoration: none;
+}
+
+.header-logo img {
+    border: 0;
+}
+
+.sds-button {
+    margin-top: 20px;
+    background-color: #532380;
+    border: 0;
+    color: #fff;
+    transition: background-color .25s ease;
+    font-size: 16px;
+    height: 56px;
+    padding: 0 32px;
+    width: 80%;
+    max-width: 275px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 16px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
