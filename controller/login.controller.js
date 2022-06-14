@@ -2,9 +2,10 @@ const path = require('path');
 const userModel = require('../model/user.model');
 const carRoute = require('../routes/car.route');
 
+let cookieLogin = false;
 
 exports.authenticate = async (req, res, next) => {
-    let username = req.body.username;
+    let username = req.body.email;
     let password = req.body.password;
     // let rememberMe = req.body.rememberMe;
     ConsoleLogger("Request body", req.body);
@@ -12,7 +13,6 @@ exports.authenticate = async (req, res, next) => {
     // let username = "admin";
     // let password = "admin";
     let rememberMe = 1;
-
     if (rememberMe == 1) {
         res.cookie("rememberMe", 1);
     } else {
@@ -26,17 +26,18 @@ exports.authenticate = async (req, res, next) => {
 
         if (user != null) {
             if (username == user.username && password == user.password) {
+                res.cookie("userLogged", 1);
                 res.redirect("/car")
             } else {
                 //Username or password incorrect
-                res.render(path.join(__dirname, '../', 'views', 'login.html'),
+                res.status(500).render(path.join(__dirname, '../', 'views', 'login.html'),
                     { message: "Username or password incorrect." });
             }
         } else {
             //User not found in system
-            res.render("login", { message: "User not found in the system." });
-        }
+            res.status(500).render("login", { message: "User not found in the system." });
 
+        }
     } catch (error) {
         res.status(500).send({ message: error.message })
     }
@@ -63,8 +64,16 @@ exports.registration = async (req, res, next) => {
 
 
 exports.login = (req, res, next) => {
-    ConsoleLogger("Reached #login");
-    res.render("login", { message: "" });
+    // ConsoleLogger("Reached #login");
+    let userLogged = req.body.userLogged;
+    if (userLogged == 1) {
+        res.render("car", { message: "" });
+    } else {
+        res.render("login", { message: "" });
+        
+    }
+
+  
 }
 
 /**
