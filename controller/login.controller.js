@@ -2,7 +2,8 @@ const path = require('path');
 const userModel = require('../model/user.model');
 const carRoute = require('../routes/car.route');
 
-let cookieLogin = false;
+let userLogged = false;
+let rememberMe = false;
 
 exports.authenticate = async (req, res, next) => {
     let username = req.body.email;
@@ -12,11 +13,12 @@ exports.authenticate = async (req, res, next) => {
 
     // let username = "admin";
     // let password = "admin";
-    let rememberMe = 1;
-    if (rememberMe == 1) {
-        res.cookie("rememberMe", 1);
+    let rememberMe = true;
+
+    if (rememberMe) {
+        res.cookie("rememberMe", true);
     } else {
-        res.clearCookie("rememberMe");
+        res.cookie("rememberMe", false);
     }
     ConsoleLogger("Request Cookies", req.cookies);
 
@@ -26,9 +28,10 @@ exports.authenticate = async (req, res, next) => {
 
         if (user != null) {
             if (username == user.username && password == user.password) {
-                res.cookie("userLogged", 1);
-                res.redirect("/car")
+                res.cookie("userLogged", true);
+                res.redirect("/car");
             } else {
+                res.cookie("userLogged", false);
                 //Username or password incorrect
                 res.status(500).render(path.join(__dirname, '../', 'views', 'login.html'),
                     { message: "Username or password incorrect." });
@@ -44,7 +47,7 @@ exports.authenticate = async (req, res, next) => {
 }
 
 exports.registration = async (req, res, next) => {
-    let username = req.body.username;
+    let username = req.body.email;
     let password = req.body.password;
 
     // console.log("-------loggin console ---- ", "Reached #registration");
@@ -64,16 +67,32 @@ exports.registration = async (req, res, next) => {
 
 
 exports.login = (req, res, next) => {
-    // ConsoleLogger("Reached #login");
-    let userLogged = req.body.userLogged;
-    if (userLogged == 1) {
-        res.render("car", { message: "" });
+
+    ConsoleLogger("Reached #login", req.cookies);
+    // console.log(userLogged, rememberMe);
+
+    if (userLogged == 'true' || rememberMe == 'true') {
+        res.redirect("/car");
     } else {
         res.render("login", { message: "" });
-        
     }
+}
 
-  
+exports.logginMiddleware = (req, res, next) => {
+    // ConsoleLogger("Reached #checkMiddle", req.cookies);
+    // ConsoleLogger("RAJENDRA => ", userLogged == 'true', rememberMe == true);
+    userLogged = req.cookies.userLogged;
+    rememberMe = req.cookies.rememberMe;
+    next();
+}
+
+exports.logout = (req, res, next) => {
+
+    // ConsoleLogger("Reached #logout", req.cookies);
+    res.clearCookie("userLogged");
+    res.clearCookie("rememberMe");
+    res.redirect("login");
+    // res.render("login", { message: "User logged out successfully" });
 }
 
 /**
