@@ -12,8 +12,8 @@ route.get("/edit/:id", carController.edit);
 route.post("/addCar", carController.addCar);
 route.get("/getCar/:id", carController.getCar);
 route.get("/allCars", carController.allCars);
-route.delete("/deleteCar/:id", carController.deleteCar);
-route.patch("/editCar/:id", carController.editCar);
+route.post("/editCar/:id", carController.editCar);
+route.get("/deleteCar/:id", carController.deleteCar);
 
 //404 page- work on this
 route.use(carController.FoOFo);
