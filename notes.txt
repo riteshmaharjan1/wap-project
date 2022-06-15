@@ -18,3 +18,7 @@ For environment:
 DB Credentials:
     UserName: wapproject
     Pass: wapproject123
+
+login
+    UserName: admin@gmail.com
+    pass: admin

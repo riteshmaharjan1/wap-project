@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://www.cars.com/signin/" type="image/jpeg" rel="shortcut icon" />
+    <title>Edit</title>
+    <link href="https://www.cars.com/signin/" type="image/jpeg" rel="shortcut icon" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="global-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  <header class="header-menu">
+                    <a class="header-logo" href="/">
+                      <img alt="Cars.com" class="header-logo header-logo__img"
+                        src="https://www.cars.com/images/logo_cars-46214ae902ff93ba8fa2e40fb73dfa02.png?vsn=d" />
+                    </a>
+        
+                    <nav class="navbar navbar-expand-sm navbar-light">
+                      <div class="container-fluid">
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div id="navbarCollapse" class="collapse navbar-collapse">
+                          <ul class="nav navbar-nav header-links-wrapper">
+                            <li class="header-link">
+                              <a href="/shopping/">Cars for Sale</a>
+                            </li>
+        
+                            <li class="header-link">
+                              <a href="/research/">Research &amp; Reviews</a>
+                            </li>
+        
+                            <li class="header-link">
+                              <a href="/news/">News &amp; Videos</a>
+                            </li>
+        
+                            <li class="header-link">
+                              <a href="/sell/">Sell Your Car</a>
+                            </li>
+        
+                            <li class="header-link">
+                              <a href="/auto-repair/">Service &amp; Repair</a>
+                            </li>
+                          </ul>
+                          <div class="sign-in-up-out mobile">
+                            <a class="header-signin" content="Sign in" href="/signin/?redirect_path=%2F">Sign in</a>
+                            <span role="presentation" class="sign-in-out-divider">/</span>
+                            <a class="header-signup" content="Sign up" href="/signup/?redirect_path=%2F">Sign up</a>
+                          </div>
+                        </div>
+        
+                        <div id="google-one-tap">
+                          <div id="g_id_onload"
+                            data-client_id="67273791563-90cd8jqav0pgefmmb4l5732bguvbjapi.apps.googleusercontent.com"
+                            data-login_uri="/signin/google_callback/"
+                            data-redirect_path="/signin/?redirect_event%5Bsocial_platform%5D=google"
+                            data-moment_callback="trackGoogleOneTap"></div>
+                        </div>
+                      </div>
+                    </nav>
+                  </header>
+                </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <form action="/update" method="put">
+                        <h2 class="add"> Edit User</h2>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label for="user" class="m10 p7">New User</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" name="user" id="user" class="form-control m10">
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="make" class="m10 p7">Make</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" name="make" id="make" class="form-control m10">
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="model" class="m10 p7">Model</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" name="model" id="model" class="form-control m10">
+                            </div>
+                            <div class="col-lg-2" >
+                                <label for="distance" class="m10 p7">Distance</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" name="distance" id="distance" class="form-control m10">
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="zip" class="m10 p7">Zip</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" name="zip" id="zip" class="form-control m10">
+                            </div> 
+                            <div class="col-lgg-12 tDisplay text-center">
+                                <button type="submit" class="btn save"> <b>Update</b> </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
