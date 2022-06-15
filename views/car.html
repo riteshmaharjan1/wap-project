@@ -23,6 +23,37 @@
     // $(function () {
     //   $("#deleteForm").attr("action", "/deleteCar/" + id);
     // })
+    $(function () {
+
+      let values = ["New cars", "Used Car"];
+      let selVal = $("#selValue");
+      populate(values, selVal);
+      $("#selProperty").change(function () {
+        let value = $("#selProperty").find(":selected").val();
+        // console.log(value);
+        // console.log(selVal);
+        if (value == "newused") {
+          let values = ["New cars", "Used Car"];
+          populate(values, selVal);
+        } else if (value == "make") {
+          let values = ["ATS", "ATS-V", "Allante", "Brougham"];
+          populate(values, selVal);
+        } else if (value == "model") {
+          let values = ["Acura", "Audi", "BMW", "Buick"];
+          populate(values, selVal);
+        }
+      });
+    });
+    function populate(values, selVal) {
+      selVal.empty();
+      for (const item of values) {
+        let option = $("<option>");
+        option.attr("value", item);
+        option.html(item);
+        selVal.append(option);
+      }
+    }
+
     $.ajax("/allCars", {
       type: "GET",
     })
@@ -142,22 +173,14 @@
               <label for="filter" class="tDisplay p7"><b>Filter</b></label>
             </div>
             <div class="col-lg-5">
-              <select class="form-select tDisplay">
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
+              <select name="selProperty" id="selProperty" class="form-select tDisplay">
+                <option value="newused">New/Used</option>
+                <option value="make">Make</option>
+                <option value="model">Model</option>
               </select>
             </div>
             <div class="col-lg-5">
-              <select class="form-select tDisplay">
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-              </select>
+              <select id="selValue" name="selValue" class="form-select tDisplay"></select>
             </div>
           </div>
         </div>
@@ -168,11 +191,8 @@
             </div>
             <div class="col-lg-5">
               <select class="form-select tDisplay">
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
-                <option value="1">1</option>
+                <option value="desc">Descending</option>
+                <option value="asc">Ascending</option>
               </select>
             </div>
           </div>
