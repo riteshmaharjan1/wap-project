@@ -38,14 +38,17 @@ exports.addCar = (req, res, next) => {
     });
 
     car.save().then(() => {
-        res.status(200).render("car",{ message: "Car added" });
+        // console.log("Car data added");
+        res.status(200).render("/car", { message: "Car added" });
     }, (err) => {
+        // console.log("Car data added");
         res.status(500).send({ message: "Something went wrong" });
     });
 }
 
 
 exports.cars = (req, res, next) => {
+    // ConsoleLogger("Cars ", req.cookies);
     let userLogged = req.cookies.userLogged;
     let rememberMe = req.cookies.rememberMe;
 
@@ -76,7 +79,7 @@ exports.edit = (req, res, next) => {
 exports.getCar = async (req, res, next) => {
     let _id = req.params.id;
     const car = await carModel.CarModel.findById(_id);
-    ConsoleLogger("Single Car", car);
+    ConsoleLogger("Single Car", cars);
     if (car != null) {
         res.status(200).send(car);
     } else {
@@ -86,6 +89,7 @@ exports.getCar = async (req, res, next) => {
 
 exports.allCars = async (req, res, next) => {
     const cars = await carModel.CarModel.find();
+    // ConsoleLogger("All Cars", cars);
     if (cars != null) {
         res.status(200).send(cars);
     } else {
@@ -102,7 +106,7 @@ exports.deleteCar = async (req, res, next) => {
     if (car != null) {
         res.status(200).send({ message: "Car deleted successfully", deletedCar: car });
     } else {
-        res.status(404).send({ message: "Item not found in database." });
+        res.status(404).json({ message: "Item not found in database." });
     }
 };
 
@@ -123,9 +127,9 @@ exports.editCar = async (req, res, next) => {
         , updatedData
     );
     if (editedCar != null) {
-        res.status(200).send({ message: "Car updated successfully", updatedCar: car });
+        res.status(200).send({ message: "Car updated successfully", updatedCar: editedCar });
     } else {
-        res.status(500).send({ message: "Something went wrong." });
+        res.status(500).json({ message: "Something went wrong." });
     }
 };
 
