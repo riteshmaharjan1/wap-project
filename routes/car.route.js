@@ -2,7 +2,7 @@ const express = require('express');
 const route = express.Router();
 const carController = require('../controller/car.controller');
 
-route.get("/hi", carController.hi);
+route.get("/testADD", carController.testADD);
 
 route.get("/car", carController.cars);
 
@@ -10,6 +10,7 @@ route.get("/car", carController.cars);
 route.post("/getCar", carController.getCar);
 route.get("/allCars", carController.allCars);
 route.post("/deleteCar", carController.deleteCar);
+route.get("/editCar", carController.editCar);
 
 //404 page- work on this
 route.use(carController.FoOFo);
