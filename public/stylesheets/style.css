@@ -150,6 +150,12 @@ body {
 
 .icon{
     width: 20px;
+    margin: 0 10px;
+}
+
+#dele{
+    border: none;
+    background: none;
 }
 
 .add{    
