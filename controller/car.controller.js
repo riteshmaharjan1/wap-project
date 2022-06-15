@@ -38,7 +38,8 @@ exports.addCar = (req, res, next) => {
     });
 
     car.save().then(() => {
-        res.status(200).render("car",{ message: "Car added" });
+        // res.status(200).render("car",{ message: "Car added" });
+        res.redirect("/car");
     }, (err) => {
         res.status(500).send({ message: "Something went wrong" });
     });
