@@ -24,7 +24,7 @@ exports.authenticate = async (req, res, next) => {
 
     try {
         const user = await userModel.UserModel.findOne({ username: username });
-        ConsoleLogger("data user==>", user);
+        ConsoleLogger("data user==>", user); 
 
         if (user != null) {
             if (username == user.username && password == user.password) {

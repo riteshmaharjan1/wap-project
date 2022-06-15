@@ -1,72 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="twitter:image"
-      content="https://graphics.cars.com/images/core/logo.png"
-    />
-    <title>Login</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="" async defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="twitter:image" content="https://graphics.cars.com/images/core/logo.png" />
+  <title>Login</title>
+  <link href="https://www.cars.com/signin/" type="image/jpeg" rel="shortcut icon" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <body>
-    <div class="global-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <header class="header-menu">
-              <a class="header-logo" href="/">
-                <img
-                  alt="Cars.com"
-                  class="header-logo header-logo__img"
-                  src="https://www.cars.com/images/logo_cars-46214ae902ff93ba8fa2e40fb73dfa02.png?vsn=d"
-                />
-              </a>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-              <nav class="navbar navbar-expand-sm navbar-light">
-                <div class="container-fluid">
-                  <button
-                    type="button"
-                    class="navbar-toggler"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse"
-                  >
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav header-links-wrapper">
-                      <li class="header-link">
-                        <a href="/shopping/">Cars for Sale</a>
-                      </li>
+  <script src="" async defer></script>
+</head>
 
-                      <li class="header-link">
-                        <a href="/research/">Research &amp; Reviews</a>
-                      </li>
+<body>
+  <div class="global-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <header class="header-menu">
+            <a class="header-logo" href="/">
+              <img alt="Cars.com" class="header-logo header-logo__img"
+                src="https://www.cars.com/images/logo_cars-46214ae902ff93ba8fa2e40fb73dfa02.png?vsn=d" />
+            </a>
 
-                      <li class="header-link">
-                        <a href="/news/">News &amp; Videos</a>
-                      </li>
+            <nav class="navbar navbar-expand-sm navbar-light">
+              <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav header-links-wrapper">
+                    <li class="header-link">
+                      <a href="/shopping/">Cars for Sale</a>
+                    </li>
 
-                      <li class="header-link">
-                        <a href="/sell/">Sell Your Car</a>
-                      </li>
+                    <li class="header-link">
+                      <a href="/research/">Research &amp; Reviews</a>
+                    </li>
 
-                      <li class="header-link">
-                        <a href="/auto-repair/">Service &amp; Repair</a>
-                      </li>
-                    </ul>
+                    <li class="header-link">
+                      <a href="/news/">News &amp; Videos</a>
+                    </li>
 
-                    <!-- <ul class="profile-links-wrapper">
+                    <li class="header-link">
+                      <a href="/sell/">Sell Your Car</a>
+                    </li>
+
+                    <li class="header-link">
+                      <a href="/auto-repair/">Service &amp; Repair</a>
+                    </li>
+                  </ul>
+
+                  <!-- <ul class="profile-links-wrapper">
                                             <li class="authed-profile-link">
                                                 <a href="/profile/saved-cars/">
                                                     <svg class="sds-text-field__icon" height="16" width="16">
@@ -97,117 +87,85 @@
                                             </li>
     
                                         </ul> -->
-                    <div class="sign-in-up-out mobile">
-                      <a
-                        class="header-signin"
-                        content="Sign in"
-                        href="/signin/?redirect_path=%2F"
-                        >Sign in</a
-                      >
-                      <span role="presentation" class="sign-in-out-divider"
-                        >/</span
-                      >
-                      <a
-                        class="header-signup"
-                        content="Sign up"
-                        href="/signup/?redirect_path=%2F"
-                        >Sign up</a
-                      >
-                    </div>
-                  </div>
-
-                  <div id="google-one-tap">
-                    <div
-                      id="g_id_onload"
-                      data-client_id="67273791563-90cd8jqav0pgefmmb4l5732bguvbjapi.apps.googleusercontent.com"
-                      data-login_uri="/signin/google_callback/"
-                      data-redirect_path="/signin/?redirect_event%5Bsocial_platform%5D=google"
-                      data-moment_callback="trackGoogleOneTap"
-                    ></div>
+                  <div class="sign-in-up-out mobile">
+                    <a class="header-signin" content="Sign in" href="/signin/?redirect_path=%2F">Sign in</a>
+                    <span role="presentation" class="sign-in-out-divider">/</span>
+                    <a class="header-signup" content="Sign up" href="/signup/?redirect_path=%2F">Sign up</a>
                   </div>
                 </div>
-              </nav>
-            </header>
-          </div>
-          <div class="col-lg-12">
-            <div class="row">
-              <div class="col-lg-8">
-                <header>
-                  <h1 class="m70"><b>Sign in</b></h1>
-                </header>
-                <p class="sds-page-section__title--sub signup-block">
-                  New to Cars.com?
-                  <a href="/signup/?redirect_path=%2F" class="color-text"
-                    >Sign up.</a
-                  >
-                  <span class="dealer-signin-link">
-                    Are you a
-                    <a href="https://www.growwithcars.com" class="color-text"
-                      >dealer?</a
-                    >
-                  </span>
-                </p>
-                <form action="/signin" class="session-form" method="post">
-                  <div class="sds-field-group">
-                    <div class="sds-field">
-                      <input
-                        class="form-control input-bor"
-                        id="email"
-                        maxlength="255"
-                        name="email"
-                        placeholder="Email"
-                        type="text"
-                        required
-                      />
-                    </div>
 
-                    <div class="sds-field">
-                      <input
-                        class="form-control input-bor"
-                        id="password"
-                        maxlength="255"
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                      />
-                      <div class="password-help">
-                        <p class="sds-helper-text">
-                          Minimum of eight characters
-                        </p>
-                        <p>
-                          <a href="/forgot_password/?email="
-                            >Forgot password?</a
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sds-disclaimer">
-                    By signing in to your profile, you agree to our&nbsp;
-                    <a href="/about/privacy/" target="_blank"
-                      >Privacy Statement</a
-                    >
-                    &nbsp;and&nbsp;
-                    <a href="/about/terms/" target="_blank">Terms of Service</a
-                    >.
-                  </div>
-
-                  <div class="sds-field-group">
-                    <input
-                      id="redirect_path"
-                      name="redirect_path"
-                      type="hidden"
-                      value=""
-                    />
-                    <div class="sds-field">
-                      <button class="sds-button" type="submit">Sign in</button>
-                    </div>
-                  </div>
-                </form>
+                <div id="google-one-tap">
+                  <div id="g_id_onload"
+                    data-client_id="67273791563-90cd8jqav0pgefmmb4l5732bguvbjapi.apps.googleusercontent.com"
+                    data-login_uri="/signin/google_callback/"
+                    data-redirect_path="/signin/?redirect_event%5Bsocial_platform%5D=google"
+                    data-moment_callback="trackGoogleOneTap"></div>
+                </div>
               </div>
-              <div class="col-lg-4">
-                <h3 class="social-title sds-heading--3">Connect with social</h3>
-                <!-- <ul class="sds-list">
+            </nav>
+          </header>
+        </div>
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-8">
+              <header>
+                <h1 class="m70"><b>Sign in</b></h1>
+              </header>
+
+              <!-- Warning Alert -->
+              <div class="alert alert-warning alert-dismissible fade show">
+                <strong>Warning!</strong><%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              </div>
+              <!-- <p><%= message %> </p> -->
+
+              <p class="sds-page-section__title--sub signup-block">
+                New to Cars.com?
+                <a href="/signup/?redirect_path=%2F" class="color-text">Sign up.</a>
+                <span class="dealer-signin-link">
+                  Are you a
+                  <a href="https://www.growwithcars.com" class="color-text">dealer?</a>
+                </span>
+              </p>
+              <form action="/auth" class="session-form" method="post">
+                <div class="sds-field-group">
+                  <div class="sds-field">
+                    <input class="form-control input-bor" id="email" maxlength="255" name="email" placeholder="Email"
+                      type="text" required />
+                  </div>
+
+                  <div class="sds-field">
+                    <input class="form-control input-bor" id="password" maxlength="255" name="password"
+                      placeholder="Password" type="password" />
+                    <div class="password-help">
+                      <p class="sds-helper-text">
+                        Minimum of eight characters
+                      </p>
+                      <p><input type="checkbox" name="remember" id="remember" value="1"> remember</p>
+                      <p>
+                        <a href="/forgot_password/?email=">Forgot password?</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="sds-disclaimer">
+                  By signing in to your profile, you agree to our&nbsp;
+                  <a href="/about/privacy/" target="_blank">Privacy Statement</a>
+                  &nbsp;and&nbsp;
+                  <a href="/about/terms/" target="_blank">Terms of Service</a>.
+                </div>
+
+                <div class="sds-field-group">
+                  <input id="redirect_path" name="redirect_path" type="hidden" value="" />
+                  <div class="sds-field">
+                    <button class="sds-button" type="submit">Sign in</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-4">
+              <h3 class="social-title sds-heading--3">Connect with social</h3>
+              <!-- <ul class="sds-list">
                                 <li class="social-link">
                                     <a class="sds-button facebook-button" data-activity-rule-type="custom"
                                         data-component="continue-with-social" data-linkname="signin-social-facebook"
@@ -264,11 +222,12 @@
                                     </a>
                                 </li>
                             </ul> -->
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

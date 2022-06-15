@@ -59,6 +59,23 @@ exports.cars = (req, res, next) => {
     }
 };
 
+exports.add = (req, res, next) => {
+    if (!req.cookies.rememberMe) {
+        res.render("/login", { message: "" });
+    }
+    res.render("add");
+
+};
+
+exports.edit = (req, res, next) => {
+    // ConsoleLogger("Cars ", req.cookies);
+    if (!req.cookies.rememberMe) {
+        res.render("/login", { message: "" });
+    }
+    res.render("edit");
+
+};
+
 
 exports.getCar = async (req, res, next) => {
     let _id = req.body.objectId;

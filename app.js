@@ -16,6 +16,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
+
 //Static path set
 app.use(express.static(path.join(__dirname)));
 app.use(express.static(path.join(__dirname, "public")));

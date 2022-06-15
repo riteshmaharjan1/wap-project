@@ -6,6 +6,10 @@ route.get("/testADD", carController.testADD);
 
 route.get("/car", carController.cars);
 
+route.get("/add", carController.add);
+
+route.get("/edit", carController.edit);
+
 //call this from ajax
 route.post("/getCar", carController.getCar);
 route.get("/allCars", carController.allCars);
