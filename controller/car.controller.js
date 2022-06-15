@@ -38,17 +38,14 @@ exports.addCar = (req, res, next) => {
     });
 
     car.save().then(() => {
-        // console.log("Car data added");
-        res.status(200).render("/car", { message: "Car added" });
+        res.status(200).render("car",{ message: "Car added" });
     }, (err) => {
-        // console.log("Car data added");
         res.status(500).send({ message: "Something went wrong" });
     });
 }
 
 
 exports.cars = (req, res, next) => {
-    // ConsoleLogger("Cars ", req.cookies);
     let userLogged = req.cookies.userLogged;
     let rememberMe = req.cookies.rememberMe;
 
@@ -68,7 +65,6 @@ exports.add = (req, res, next) => {
 };
 
 exports.edit = (req, res, next) => {
-    // ConsoleLogger("Cars ", req.cookies);
     if (!req.cookies.rememberMe) {
         res.render("/login", { message: "" });
     }
@@ -80,7 +76,7 @@ exports.edit = (req, res, next) => {
 exports.getCar = async (req, res, next) => {
     let _id = req.params.id;
     const car = await carModel.CarModel.findById(_id);
-    ConsoleLogger("Single Car", cars);
+    ConsoleLogger("Single Car", car);
     if (car != null) {
         res.status(200).send(car);
     } else {
@@ -90,7 +86,6 @@ exports.getCar = async (req, res, next) => {
 
 exports.allCars = async (req, res, next) => {
     const cars = await carModel.CarModel.find();
-    // ConsoleLogger("All Cars", cars);
     if (cars != null) {
         res.status(200).send(cars);
     } else {
