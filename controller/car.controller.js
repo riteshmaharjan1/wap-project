@@ -110,8 +110,10 @@ exports.editCar = async (req, res, next) => {
     let _id = req.params.id;
     const updatedData = req.body;
 
+    console.log("---updatedData", updatedData);
+
     // let _id = "62a7a674ccc2d04a43d42c60";
-    // const updatedData = {
+    // const updatedData = {s
     //     condition: "Used/For now",
     //     make: "2011",
     //     price: 25000,
@@ -123,7 +125,8 @@ exports.editCar = async (req, res, next) => {
         , updatedData
     );
     if (editedCar != null) {
-        res.status(200).send({ message: "Car updated successfully", updatedCar: car });
+        // res.status(200).send({ message: "Car updated successfully", updatedCar: car });
+        res.render('car',{ message: "Car updated successfully", updatedCar: car });
     } else {
         res.status(500).send({ message: "Something went wrong." });
     }
