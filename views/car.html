@@ -55,12 +55,20 @@
         });
 
       function sortCars(cars) {
-
         //do sorting based on different categories
         return cars.sort((x, y) => {
           return x.price - y.price;
         });
       }
+
+      function filterCars(cars, property, value) {
+        return cars.filter(function (item, i, arr) {
+          return item.property == value;
+        });
+      }
+
+
+      
     </script>
   </head>
   <body>

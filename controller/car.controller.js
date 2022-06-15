@@ -39,7 +39,7 @@ exports.addCar = (req, res, next) => {
 
     car.save().then(() => {
         // console.log("Car data added");
-        res.status(200).send({ message: "Car added" });
+        res.status(200).render("/car", { message: "Car added" });
     }, (err) => {
         // console.log("Car data added");
         res.status(500).send({ message: "Something went wrong" });
@@ -61,7 +61,7 @@ exports.cars = (req, res, next) => {
 
 
 exports.getCar = async (req, res, next) => {
-    let _id = req.body.objectId;
+    let _id = req.params.id;
     const car = await carModel.CarModel.findById(_id);
     ConsoleLogger("Single Car", cars);
     if (car != null) {
@@ -82,7 +82,8 @@ exports.allCars = async (req, res, next) => {
 };
 
 exports.deleteCar = async (req, res, next) => {
-    let _id = req.body.objectId;
+    let _id = req.params.objectId;
+    // let _id = "62a7a674cac2d04a43d42c60";
     const car = await carModel.CarModel.findByIdAndDelete(_id);
     //think about removing item from table and refreshing the table view    
 
@@ -94,7 +95,7 @@ exports.deleteCar = async (req, res, next) => {
 };
 
 exports.editCar = async (req, res, next) => {
-    let _id = req.body.objectId;
+    let _id = req.params.id;
     const updatedData = req.body;
 
     // let _id = "62a7a674ccc2d04a43d42c60";
@@ -110,7 +111,7 @@ exports.editCar = async (req, res, next) => {
         , updatedData
     );
     if (editedCar != null) {
-        res.status(200).send({ message: "Car updated successfully", deletedCar: car });
+        res.status(200).send({ message: "Car updated successfully", updatedCar: car });
     } else {
         res.status(500).send({ message: "Something went wrong." });
     }
