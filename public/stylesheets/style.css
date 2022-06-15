@@ -115,3 +115,47 @@ body {
     vertical-align: middle;
     white-space: nowrap;
 }
+
+.tDisplay{
+    margin-top: 30px;
+}
+
+.m10{
+    margin: 10px 0;
+}
+
+.icon{
+    width: 20px;
+}
+
+.add{    
+    padding-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #541a79;
+}
+
+.p7{
+    padding: 6px 0;
+}
+
+tbody, td, tfoot, th, thead, tr{
+    vertical-align: middle;
+}
+
+.txtCenter{
+    text-align: center;
+}
+
+.txtRight{
+    text-align: right;
+}
+
+.save{
+    margin-top: 15px !important;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+    background-image: linear-gradient(-90deg, #00bfde, #532380);
+    color: #fff !important;
+    font-weight: bold !important;
+}
