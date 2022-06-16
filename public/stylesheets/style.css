@@ -84,19 +84,29 @@ body {
     width: auto;
 } 
 
+.icon-medi{
+    width: 20px;
+    height: 20px;
+}
+
+#remember{
+    color: #532380;
+}
+
 .logout{
     right: 0;
     float: right;
     position: absolute;
     padding: 10px 20px !important;
     vertical-align: middle;
-    top: 0px;
+    /* top: 0px; */
+    top: -5px;
     border-radius: 4px;
     border: 1px solid #ccc !important;
     background: #532380;
 }
 
-.global-header .logout a{
+.global-header .ahref, .global-header .ahref:hover{
     color: #fff;
     font-weight: 800;
 }
@@ -280,9 +290,8 @@ tbody, td, tfoot, th, thead, tr{
     .logout {
         padding: 15px 30px !important;
         border-radius: 4px;
-        width: 100px !important;
+        width: auto !important;
         text-align: center;
         position: relative;
-        top: auto;
     }
 }
