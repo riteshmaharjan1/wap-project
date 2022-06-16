@@ -90,9 +90,9 @@ exports.allCars = async (req, res, next) => {
     let sort = req.params.sort;
     // console.log(property, value, sort);
 
-    let sortType = { price: -1 };
+    let sortType = { price: 1 };
     if (sort == "desc") {
-        sortType = { price: 1 };
+        sortType = { price: -1 };
     }
     console.log(sortType);
     let findType = {};
@@ -110,6 +110,8 @@ exports.allCars = async (req, res, next) => {
     // } else {
     //     cars = await carModel.CarModel.find().sort(sortType);
     // }
+
+
 
     if (property == "condition" || property == "make" || property == "model") {
         cars = await carModel.CarModel.find(findType).sort(sortType);

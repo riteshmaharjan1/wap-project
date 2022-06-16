@@ -15,6 +15,7 @@ route.get("/edit/:id", carController.edit);
 route.post("/addCar", carController.addCar);
 route.get("/getCar/:id", carController.getCar);
 route.get("/allCars/:property/:value/:sort", carController.allCars);
+route.get("/allCars/:sort", carController.allCars);
 
 //As a backup plan if no parameters are passed, 
 route.get("/allCars", carController.allCars);
