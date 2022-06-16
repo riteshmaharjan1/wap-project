@@ -74,15 +74,32 @@ body {
     background-color: transparent;
     border: 0;
     box-shadow: none;
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(5,auto);
-    grid-template-rows: auto;
+    grid-template-rows: auto; */
     height: auto;
     margin: 0;
     padding-bottom: 0;
     position: static;
     width: auto;
 } 
+
+.logout{
+    right: 0;
+    float: right;
+    position: absolute;
+    padding: 10px 20px !important;
+    vertical-align: middle;
+    top: 0px;
+    border-radius: 4px;
+    border: 1px solid #ccc !important;
+    background: #532380;
+}
+
+.global-header .logout a{
+    color: #fff;
+    font-weight: 800;
+}
 
 .global-header .container{
     align-items: center;
@@ -259,5 +276,13 @@ tbody, td, tfoot, th, thead, tr{
     .con{
         padding-left: 15px;
         border-left: none;
+    }
+    .logout {
+        padding: 15px 30px !important;
+        border-radius: 4px;
+        width: 100px !important;
+        text-align: center;
+        position: relative;
+        top: auto;
     }
 }
