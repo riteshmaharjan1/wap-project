@@ -53,7 +53,7 @@ exports.cars = (req, res, next) => {
     if (userLogged == 'true' || rememberMe == 'true') {
         res.status(200).render("car");
     } else {
-        res.render("login", { message: "" });
+        res.redirect("/login");
     }
 };
 
@@ -153,7 +153,7 @@ exports.searchCar = async (req, res, next) => {
         });
 
     if (result != null) {
-        res.status(200).send(list);
+        res.status(200).send(result);
     } else {
         res.status(500).send({ message: "something went wrong." });
     }
