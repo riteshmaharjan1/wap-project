@@ -8,12 +8,12 @@ let rememberMe = false;
 exports.authenticate = async (req, res, next) => {
     let username = req.body.email;
     let password = req.body.password;
-    // let rememberMe = req.body.rememberMe;
+    let rememberMe = req.body.rememberMe;
     ConsoleLogger("Request body", req.body);
 
     // let username = "admin";
     // let password = "admin";
-    let rememberMe = true;
+    // let rememberMe = true;
 
     if (rememberMe) {
         res.cookie("rememberMe", true);
