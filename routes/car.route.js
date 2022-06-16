@@ -11,7 +11,7 @@ route.get("/edit/:id", carController.edit);
 //call this from ajax
 route.post("/addCar", carController.addCar);
 route.get("/getCar/:id", carController.getCar);
-route.get("/allCars", carController.allCars);
+route.get("/allCars/:id/:ids/:idss", carController.allCars);
 route.post("/editCar/:id", carController.editCar);
 route.get("/deleteCar/:id", carController.deleteCar);
 

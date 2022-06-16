@@ -38,8 +38,8 @@ exports.authenticate = async (req, res, next) => {
             }
         } else {
             //User not found in system
-            res.status(500).render("login", { message: "User not found in the system." });
-
+            // res.status(500).render("login", { message: "User not found in the system." });
+            res.redirect("/login");
         }
     } catch (error) {
         res.status(500).send({ message: error.message })

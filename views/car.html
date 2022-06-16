@@ -18,18 +18,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script>
-    // let url = window.location.pathname;
-    // let id = url.substring(url.lastIndexOf('/') + 1);
-    // $(function () {
-    //   $("#deleteForm").attr("action", "/deleteCar/" + id);
-    // })
+    let fil1 = "";
+    let fil2 = "";
+    let sort = "";
     $(function () {
-
-      let values = ["New cars", "Used Car"];
+      let values = ["Please select type", "New cars", "Used Car"];
       let selVal = $("#selValue");
+      fil2 = selVal;
       populate(values, selVal);
       $("#selProperty").change(function () {
         let value = $("#selProperty").find(":selected").val();
+        fil1 = value;
+        let s = $("#sort").find(":selected").val();
+        sort = s;
         // console.log(value);
         // console.log(selVal);
         if (value == "newused") {
@@ -40,6 +41,9 @@
           populate(values, selVal);
         } else if (value == "model") {
           let values = ["Acura", "Audi", "BMW", "Buick"];
+          populate(values, selVal);
+        } else {
+          let values = ["Please select type"];
           populate(values, selVal);
         }
       });
@@ -54,7 +58,7 @@
       }
     }
 
-    $.ajax("/allCars", {
+    $.ajax("/allCars" + fil1 + "/" + fil2 + "/" + sort, {
       type: "GET",
     })
       .done((cars) => {
@@ -129,32 +133,26 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav header-links-wrapper">
                     <li class="header-link">
-                      <a href="/shopping/">Cars for Sale</a>
+                      <a href="#">Cars for Sale</a>
                     </li>
 
                     <li class="header-link">
-                      <a href="/research/">Research &amp; Reviews</a>
+                      <a href="#">Research &amp; Reviews</a>
                     </li>
 
                     <li class="header-link">
-                      <a href="/news/">News &amp; Videos</a>
+                      <a href="#">News &amp; Videos</a>
                     </li>
 
                     <li class="header-link">
-                      <a href="/sell/">Sell Your Car</a>
+                      <a href="#">Sell Your Car</a>
                     </li>
 
                     <li class="header-link">
-                      <a href="/auto-repair/">Service &amp; Repair</a>
+                      <a href="#">Service &amp; Repair</a>
                     </li>
                   </ul>
-                  <div class="sign-in-up-out mobile">
-                    <a class="header-signin" content="Sign in" href="/signin/?redirect_path=%2F">Sign in</a>
-                    <span role="presentation" class="sign-in-out-divider">/</span>
-                    <a class="header-signup" content="Sign up" href="/signup/?redirect_path=%2F">Sign up</a>
-                  </div>
                 </div>
-
                 <div id="google-one-tap">
                   <div id="g_id_onload"
                     data-client_id="67273791563-90cd8jqav0pgefmmb4l5732bguvbjapi.apps.googleusercontent.com"
@@ -169,28 +167,30 @@
         <!-- <h1>CAR PAGE</h1> -->
         <div class="col-lg-6">
           <div class="row">
-            <div class="col-lg-1">
-              <label for="filter" class="tDisplay p7"><b>Filter</b></label>
+            <div class="col-sm-1">
+              <label for="filter" class="tDisplay p7"><b>Filter:</b></label>
             </div>
-            <div class="col-lg-5">
+            <div class="col-sm-5">
               <select name="selProperty" id="selProperty" class="form-select tDisplay">
+                <option value="">Please select type</option>
                 <option value="newused">New/Used</option>
                 <option value="make">Make</option>
                 <option value="model">Model</option>
               </select>
             </div>
-            <div class="col-lg-5">
+            <div class="col-sm-5">
               <select id="selValue" name="selValue" class="form-select tDisplay"></select>
             </div>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="row">
-            <div class="col-lg-1 txtRight">
-              <label for="sort" class="tDisplay p7"><b>Sort</b></label>
+            <div class="col-sm-1">
+              <label for="sort" class="tDisplay p7"><b>Sort:</b></label>
             </div>
-            <div class="col-lg-5">
-              <select class="form-select tDisplay">
+            <div class="col-sm-6">
+              <select class="form-select tDisplay" id="sort">
+                <option value="">Please select sort by price</option>
                 <option value="desc">Descending</option>
                 <option value="asc">Ascending</option>
               </select>
@@ -198,33 +198,34 @@
           </div>
         </div>
 
-        <div class="col-lgg-12 tDisplay txtRight">
+        <div class="col-lg-12 tDisplay txtRight">
           <a href="/add">
             <button type="submit" class="btn save"><b>Add</b></button>
           </a>
         </div>
 
         <div class="col-lg-12">
-          <table class="table table-striped tDisplay">
-            <thead>
-              <tr>
-                <!-- <th scope="col">#</th> -->
-                <th scope="col">Condition</th>
-                <th scope="col">Make</th>
-                <th scope="col">Price</th>
-                <th scope="col">Distance</th>
-                <th scope="col">Zip</th>
-                <th scope="col">Model</th>
-                <!-- <th scope="col">View</th> -->
-                <th scope="col" class="txtCenter">Action</th>
-              </tr>
-            </thead>
-            <tbody id="tBody">
-            </tbody>
-            <div id="noData">No Contents to show.</div>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-striped tDisplay">
+              <thead>
+                <tr>
+                  <!-- <th scope="col">#</th> -->
+                  <th scope="col">Condition</th>
+                  <th scope="col">Make</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Distance</th>
+                  <th scope="col">Zip</th>
+                  <th scope="col">Model</th>
+                  <!-- <th scope="col">View</th> -->
+                  <th scope="col" class="txtCenter">Action</th>
+                </tr>
+              </thead>
+              <tbody id="tBody">
+              </tbody>
+            </table>
+          </div>
         </div>
-
+        <div id="noData">No Contents to show.</div>
 
         <!-- Modal -->
         <form id="deleteForm" method="get">
