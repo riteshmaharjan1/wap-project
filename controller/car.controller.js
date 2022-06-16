@@ -84,8 +84,41 @@ exports.getCar = async (req, res, next) => {
 };
 
 exports.allCars = async (req, res, next) => {
-    const cars = await carModel.CarModel.find();
-    // ConsoleLogger("All Cars", cars);
+
+    let property = req.params.property;
+    let value = req.params.value;
+    let sort = req.params.sort;
+    // console.log(property, value, sort);
+
+    let sortType = { price: 1 };
+    if (sort == "desc") {
+        sortType = { price: -1 };
+    }
+    console.log(sortType);
+    let findType = {};
+    findType[property] = value;
+    console.log(findType);
+
+    let cars;
+    // console.log(value);
+    // if (property == "condition") {
+    //     cars = await carModel.CarModel.find({ condition: value }).sort(sortType);
+    // } else if (property == "make") {
+    //     cars = await carModel.CarModel.find({ make: value }).sort(sortType);
+    // } else if (property == "model") {
+    //     cars = await carModel.CarModel.find({ model: value }).sort(sortType);
+    // } else {
+    //     cars = await carModel.CarModel.find().sort(sortType);
+    // }
+
+
+
+    if (property == "condition" || property == "make" || property == "model") {
+        cars = await carModel.CarModel.find(findType).sort(sortType);
+    } else {
+        cars = await carModel.CarModel.find().sort(sortType);
+    }
+
     if (cars != null) {
         res.status(200).send(cars);
     } else {
@@ -133,8 +166,10 @@ exports.editCar = async (req, res, next) => {
 
 
 exports.searchCar = async (req, res, next) => {
+
+    //do changes if we need search option as well.
     let condition = req.body.condition;
-    let style = req.body.bodyStyle;
+    let make = req.body.make;
     let price = req.body.price;
     let distance = req.body.distance;
     let zip = req.body.zip;
