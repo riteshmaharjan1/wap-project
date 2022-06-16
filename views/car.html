@@ -25,8 +25,6 @@
       populate(values, selVal);
       $("#selProperty").change(function () {
         let value = $("#selProperty").find(":selected").val();
-        // let sortValue = $("#sort").find(":selected").val();
-
         if (value == "condition") {
           let values = ["New Cars", "Used Cars"];
           populate(values, selVal);
@@ -67,20 +65,14 @@
       }
     }
 
-
     function getPropValue() {
       let property = $("#selProperty").find(":selected").val();
       let value = $("#selValue").find(":selected").val();
       let sort1 = $("#sort").find(":selected").val();
-      // console.log(property, value, sort);
-      console.log(",sort1sort1sort1sort1,", sort1);
-
-
       if ((property == "" || property == null)) {
         urlC = "/allCars/" + sort1;
       } else {
         urlC = "/allCars/" + property + "/" + value + "/" + sort1;
-        // console.log("JESSY = > ", urlC);
       }
       getCars(urlC);
     }
@@ -120,15 +112,10 @@
               let actionTD = $("<td class='txtCenter'>");
               let oId = car._id;
 
-              // if (getUrl != "/allCars"){
-              //   $("#tBody").empty();
-              // }
-
               actionTD.html("<a href='/edit/" + oId + "'><img src='../public/images/edit.png' alt='edit' class='icon'></a><a href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' value='" + oId + "' id='dele'><img src='../public/images/delete.jpeg' alt='delete' class='icon'></a>");
               tr.append(actionTD);
               $("#deleteForm").attr("action", "/deleteCar/" + oId);
               mainContent.append(tr);
-
 
             }
           }
@@ -136,19 +123,6 @@
         .fail(() => {
           console.log("Failed gracefully.");
         });
-    }
-
-    function sortCars(cars) {
-      //do sorting based on different categories
-      return cars.sort((x, y) => {
-        return x.price - y.price;
-      });
-
-      function filterCars(cars, property, value) {
-        return cars.filter(function (item, i, arr) {
-          return item.property == value;
-        });
-      }
     }
 
   </script>
@@ -160,7 +134,7 @@
       <div class="row">
         <div class="col-lg-12">
           <header class="header-menu">
-            <a class="header-logo" href="/">
+            <a class="header-logo" href="/car">
               <img alt="Cars.com" class="header-logo header-logo__img"
                 src="https://www.cars.com/images/logo_cars-46214ae902ff93ba8fa2e40fb73dfa02.png?vsn=d" />
             </a>
@@ -175,22 +149,23 @@
                     <li class="header-link">
                       <a href="#">Cars for Sale</a>
                     </li>
-
                     <li class="header-link">
                       <a href="#">Research &amp; Reviews</a>
                     </li>
-
                     <li class="header-link">
                       <a href="#">News &amp; Videos</a>
                     </li>
-
                     <li class="header-link">
                       <a href="#">Sell Your Car</a>
                     </li>
-
                     <li class="header-link">
                       <a href="#">Service &amp; Repair</a>
                     </li>
+                    <a href="/logout" class="ahref">
+                      <li class="header-link logout">
+                        Logout
+                      </li>
+                    </a>
                   </ul>
                 </div>
                 <div id="google-one-tap">
@@ -258,7 +233,6 @@
                   <th scope="col">Distance</th>
                   <th scope="col">Zip</th>
                   <th scope="col">Model</th>
-                  <!-- <th scope="col">View</th> -->
                   <th scope="col" class="txtCenter">Action</th>
                 </tr>
               </thead>
