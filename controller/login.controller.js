@@ -8,40 +8,43 @@ let rememberMe = false;
 exports.authenticate = async (req, res, next) => {
     let username = req.body.email;
     let password = req.body.password;
-    let rememberMe = req.body.rememberMe;
+    let rememberMe = req.body.remember;
     ConsoleLogger("Request body", req.body);
 
-    // let username = "admin";
-    // let password = "admin";
-    // let rememberMe = true;
-
-    if (rememberMe) {
-        res.cookie("rememberMe", true);
-    } else {
-        res.cookie("rememberMe", false);
-    }
     ConsoleLogger("Request Cookies", req.cookies);
 
     try {
         const user = await userModel.UserModel.findOne({ username: username });
-        ConsoleLogger("data user==>", user); 
+        ConsoleLogger("data user==>", user);
 
         if (user != null) {
             if (username == user.username && password == user.password) {
                 res.cookie("userLogged", true);
+                // console.log(res.cookie);
+                console.log("RAJENDRA", rememberMe == 'true', rememberMe == '1', rememberMe == 1);
+                if (rememberMe == 'true' || rememberMe == '1') {
+                    res.cookie("rememberMe", true, { expires: new Date(Date.now() + 900000), httpOnly: true });
+                } else {
+                    res.clearCookie("rememberMe");
+                }
                 res.redirect("/car");
             } else {
-                res.cookie("userLogged", false);
+                res.clearCookie("userLogged");
+                res.clearCookie("rememberMe");
                 //Username or password incorrect
                 res.status(500).render(path.join(__dirname, '../', 'views', 'login.html'),
                     { message: "Username or password incorrect." });
             }
         } else {
+            res.clearCookie("userLogged");
+            res.clearCookie("rememberMe");
             //User not found in system
             // res.status(500).render("login", { message: "User not found in the system." });
             res.redirect("/login");
         }
     } catch (error) {
+        res.clearCookie("userLogged");
+        res.clearCookie("rememberMe");
         res.status(500).send({ message: error.message })
     }
 }
