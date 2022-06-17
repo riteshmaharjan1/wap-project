@@ -83,6 +83,8 @@
       })
         .done((cars) => {
           if (Array.isArray(cars)) {
+            console.log("--cars---", cars)
+            $("#addNotification").show();
 
             //clearing the tag
             var mainContent = $("#tBody");
@@ -163,7 +165,7 @@
                     </li>
                     <a href="/logout" class="ahref">
                       <li class="header-link logout">
-                        Logout
+                        Sign out
                       </li>
                     </a>
                   </ul>
@@ -264,7 +266,6 @@
             </div>
           </div>
         </form>
-
       </div>
     </div>
   </div>

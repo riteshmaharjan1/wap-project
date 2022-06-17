@@ -39,8 +39,8 @@ exports.authenticate = async (req, res, next) => {
             res.clearCookie("userLogged");
             res.clearCookie("rememberMe");
             //User not found in system
-            // res.status(500).render("login", { message: "User not found in the system." });
-            res.redirect("/login");
+            res.status(500).render("login", { message: "User not found in the system." });
+            // res.redirect("/login");
         }
     } catch (error) {
         res.clearCookie("userLogged");
