@@ -114,9 +114,9 @@
               let actionTD = $("<td class='txtCenter'>");
               let oId = car._id;
 
-              actionTD.html("<a href='/edit/" + oId + "'><img src='../public/images/edit.png' alt='edit' class='icon'></a><a href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' value='" + oId + "' id='dele'><img src='../public/images/delete.jpeg' alt='delete' class='icon'></a>");
+              actionTD.html("<a href='/edit/" + oId + "'><img src='../public/images/edit.png' alt='edit' class='icon'></a><a href='#' data-bs-toggle='modal' data-bs-target='#exampleModal' value='" + oId + "' id='dele' onclick = populateDel('" + oId + "')><img src='../public/images/delete.jpeg' alt='delete' class='icon'></a>");
               tr.append(actionTD);
-              $("#deleteForm").attr("action", "/deleteCar/" + oId);
+              // $("#deleteForm").attr("action", "/deleteCar/" + oId); //added a function that populate dynamic ID now
               mainContent.append(tr);
 
             }
@@ -127,6 +127,9 @@
         });
     }
 
+    function populateDel(id){
+        $("#deleteForm").attr("action", "/deleteCar/" + id);
+    }
   </script>
 </head>
 
